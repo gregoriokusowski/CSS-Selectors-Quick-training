@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CSS Selectors</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+  </head>
+  <body>
+
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <div class="row">
+            <div class="col-md-5">
+              <a class="navbar-brand" href="#">CSS Selectors</a>
+            </div>
+            <div class="col-md-6">
+              <input type="text" id="selector" value="" class="form-control" placeholder="Insira o seletor aqui">
+            </div>
+            <div class="col-md-1">
+              <a href="#" id="aplicar" class="btn btn-default">Aplicar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-default" data-example-id="basic-forms">
+            <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Username</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Larry</td>
+          <td>the Bird</td>
+          <td>@twitter</td>
+        </tr>
+      </tbody>
+    </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </body>
+  <script type="text/javascript">
+    $("#aplicar").on("click", function(){
+      var selector = $("#selector").val();
+      $(".tested-style").removeAttr('style').removeClass("tested-style");
+      $(selector).css("border", "5px solid red").addClass("tested-style");
+    });
+  </script>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CSS Selectors</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+  </head>
+  <body>
+
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <div class="row">
+            <div class="col-md-5">
+              <a class="navbar-brand" href="#">CSS Selectors</a>
+            </div>
+            <div class="col-md-6">
+              <input type="text" id="selector" value="" class="form-control" placeholder="Insira o seletor aqui">
+            </div>
+            <div class="col-md-1">
+              <a href="#" id="aplicar" class="btn btn-default">Aplicar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-default" data-example-id="basic-forms">
+            <div class="panel-body">
+              <form>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input type="email" class="form-control" name="exampleInputEmail1" id="exampleInputEmail1" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputFile">File input</label>
+                  <input type="file" id="exampleInputFile">
+                  <p class="help-block">Example block-level help text here.</p>
+                </div>
+                <div class="form-group">
+                  <label for="cidade">Cidade</label>
+                  <select class="form-control" name="cidade">
+                    <option>Ivoti</option>
+                    <option>Novo Hamburgo</option>
+                    <option>Porto Alegre</option>
+                    <option>Alegrete</option>
+                    <option>Uruguaiana</option>
+                  </select>
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox"> Check me out
+                  </label>
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </body>
+  <script type="text/javascript">
+    $("#aplicar").on("click", function(){
+      var selector = $("#selector").val();
+      $(".tested-style").removeAttr('style').removeClass("tested-style");
+      $(selector).css("border", "5px solid red").addClass("tested-style");
+    });
+  </script>
+</html>

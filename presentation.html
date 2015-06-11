@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# CSS Selectors
+
+PrimeSystems
+
+Gregório Kusowski
+
+---
+
+# Roteiro
+
+1. Intro
+2. Elementos
+3. Classes
+4. Ids
+5. Seletores
+6. Seletores de Atributos
+7. Pseudo-seletores
+8. Utilização - Prática
+9. Continue aprendendo
+
+---
+
+# Intro
+
+* O que é a DOM (Document Object Model)?
+* O que são seletores CSS?
+* Para que servem?
+
+---
+
+# Elementos
+
+Elementos no html são os nós da DOM.
+Por exemplo:
+
+```html
+&lt;div&gt; ... &lt/div&gt;
+```
+
+é um elemento div. Outros elementos são padrão do HTML5, e diversos outros podem ser criados dinamicamente.
+
+Geralmente ele é composto pelo seu nome e atributos. Um elemento também pode possuir conteúdo, e este pode ser composto por texto ou até mesmo outros elementos.
+
+---
+
+# Classes
+
+As classes são propriedades dos elementos, que geralmente são compartilhadas por diversos elementos em uma mesma DOM.
+
+```html
+&lt;div class="item promotion-item"&gt; ... &lt/div&gt;
+&lt;div class="item"&gt; ... &lt/div&gt;
+```
+
+Notem que podem existir várias classes para um mesmo elemento, basta estarem separadas por espaços.
+
+---
+
+# Ids
+
+Os Ids são identificadores únicos (ou ao menos devem ser) na DOM. Isso quer dizer, que um mesmo ID não pode ser compartilhado por mais de um elemento.
+
+```html
+&lt;div id="item-1"&gt; ... &lt/div&gt;
+&lt;div id="item-2"&gt; ... &lt/div&gt;
+```
+
+---
+
+# Seletores
+
+Os seletores então, são uma forma de buscarmos elementos, ou até mesmo navegarmos pela DOM.
+A sintaxe de seletores é bem simples, e trabalha com base nos elementos e em suas propriedades.
+Para buscarmos elementos de um determinado tipo, basta utilizarmos um seletor com o nome do elemento, por exemplo:
+
+```html
+&lt;div id="item-1"&gt; ... &lt/div&gt;
+&lt;div id="item-2"&gt; ... &lt/div&gt;
+```
+
+Este seletor retorna todos os elementos `div` da DOM. No exemplo acima, retornará os dois elementos.
+
+Para buscar todos elementos da DOM, use o seletor `*`.
+
+---
+
+# Seletores de Classe
+
+Para os atributos de classe e id, existe formas compactas de buscar elementos.
+
+```html
+&lt;div class="item promotion-item"&gt; ... &lt/div&gt;
+&lt;div class="item"&gt; ... &lt/div&gt;
+&lt;div&gt; ... &lt/div&gt;
+&lt;table class="item"&gt; ... &lt/table&gt;
+```
+
+Para classe, é o caracter `.` que deve anteceder o nome da classe.
+Por exemplo, para retornar os elementos da classe `item`, basta usar o seletor `.item`.
+Isso retornará as duas divs e a table acima.
+
+Porém podemos combinar seletores, e buscarmos apenas as divs com o seguinte seletor: `div.item`.
+Além do mais, é possível combinar até mesmo seletores de classe, como: `div.item.promotion-item`.
+
+---
+
+# Seletores de ID
+
+Os seletores de ID são a forma compacta para busca de elementos que utiliza o caracter `#`.
+
+```html
+&lt;div id="item-1"&gt; ... &lt/div&gt;
+&lt;div id="item-2"&gt; ... &lt/div&gt;
+&lt;div id="item-3"&gt; ... &lt/div&gt;
+```
+
+O seletor `#item-1` será capaz de buscar exatamente a div que precisamos.
+
+---
+
+# Combinando seletores
+
+Já vimos como é possível combinar seletores para busca direta em apenas um elemento.
+Como trabalharemos com buscas em uma árvore, pode ser relevante buscarmos elementos baseados nos nós entre ele e a raíz do documento.
+
+Para isso, basta separar os seletores de cada elemento com espaços: `div#raiz div.galho div.folha`
+
+Caso seja necessário buscar um elemento que esteja diretamente ligado, e seja interno ao elemento anterior, é possível utilizar o caracter `>`: `div.galho > div.folha`
+
+Estude depois sobre os seletores `+` e `~` para acessar elementos no mesmo nível da árvore.
+
+---
+
+# Busca com "OU"
+
+Para alguns casos, queremos vincular eventos, ou buscar um comportamento que pode ocorrer de duas formas.
+
+Para isso, é possível fazer mais de uma busca por seletor usando a mesma string, basta separar por espaço:
+
+`div.content table#valores, div.lista div.item`
+
+---
+
+# Seletores de Atributos
+
+É possível buscar elementos também por atributos que não sejam apenas classe ou id.
+
+A existencia pode ser validada com o seletor `[atributo]`.
+Outro exemplo: `[id="i1"]` é o equivalente a `#i1`, porém você pode experimentar com qualquer outro atributo.
+
+Para validação de atributos no seletor, existem ainda outros operadores: `*=, ^=, $=` e outros.
+
+---
+
+# Pseudo-seletores
+
+Os pseudo seletores são utilizados para buscar elementos em algum estado especial ou de alguma forma não convencional para busca em árvore.
+
+Exemplos:
+
+* `.item:contains(bla)` para selecionar elementos da classe item que possuam o texto "bla"
+* `.item:first` para selecionar apenas o primeiro item, caso o seletor inicial retorne vários elementos
+* `:input` para retornar todos elementos de entrada de dados (existem inputs, radio buttons, selects, textareas, e outros)
+
+---
+
+class: center, middle
+
+# SHOWTIME!
+
+---
+
+# Continue aprendendo
+
+
+http://sizzlejs.com/
+
+http://www.w3schools.com/cssref/css_selectors.asp
+
+http://code.tutsplus.com/pt/tutorials/the-30-css-selectors-you-must-memorize--net-16048
+
+http://www.w3.org/TR/CSS21/selector.html%23id-selectors
+
+http://www.quirksmode.org/css/selectors/
+
+http://css.maxdesign.com.au/selectutorial/
+
+http://www.codecademy.com/courses/web-beginner-en-XUclI/0/1
+
+https://saucelabs.com/resources/selenium/css-selectors
+
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
